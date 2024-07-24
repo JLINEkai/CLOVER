@@ -79,7 +79,6 @@ python -m torch.distributed.run --nproc_per_node=1 train.py
 python -m torch.distributed.run --nproc_per_node=1 evaluate.py --cfg-path lavis/projects/blip2/eval/vqav2_zeroshot_flant5xl_eval.yaml
 ````
 
-If you have any questions, please send an email to chenkaitao@pjlab.org.cn.
 
 ## Case Study
 
@@ -94,6 +93,8 @@ If you have any questions, please send an email to chenkaitao@pjlab.org.cn.
  
   *Qualitative comparisons of visual question answering on LLaVA-Med-17K. (Image source: [link](https://www.ncbi.nlm.nih.gov/pubmed/26147524))*
 </p>
+
+If you have any questions, please send an email to chenkaitao@pjlab.org.cn.
 
 ## Related Projects
 - Our model is based on BLIP-2 [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://github.com/salesforce/LAVIS/tree/main)
