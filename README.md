@@ -11,16 +11,16 @@ The advent of vision-language models fosters the interactive conversations betwe
 
 
 ## Release
-- Checkponits and instruction dataset will be released soon. 
+- Checkpoints and instruction dataset will be released soon. 
  
 
 
-
+## Workflow of CLOVER
 
 <p align="center">
     <img src="imgs/image.png" width="90%"> <br>
  
-  *The workflow of CLOVER. CLOVER employs the training framework of BLIP-2 to achieve a fast domain tuning with lightweight parameters. The entire training process of CLOVER includes two major stages: (i) alignment of vision and language and (ii) supervised fine-tuning with instructions. The alignment compels the model to acquire valuable representations between vision and language. Instruction fine-tuning is vital here for activating LLMs to excel in visual language question answering. Stage 1 requires inputs of image-text pairs, where we use the large-scale Quilt-1M dataset. Stage 2 demands domain-specific instruction data. As we have seen a significant lack of the required instruction data in the literature, we propose a low-cost solution of instruction data generation carefully designed for analyzing pathological data.*
+  *CLOVER employs the training framework of BLIP-2 to achieve a fast domain tuning with lightweight parameters. The entire training process of CLOVER includes two major stages: (i) alignment of vision and language and (ii) supervised fine-tuning with instructions. The alignment compels the model to acquire valuable representations between vision and language. Instruction fine-tuning is vital here for activating LLMs to excel in visual language question answering. Stage 1 requires inputs of image-text pairs, where we use the large-scale Quilt-1M dataset. Stage 2 demands domain-specific instruction data. As we have seen a significant lack of the required instruction data in the literature, we propose a low-cost solution of instruction data generation carefully designed for analyzing pathological data.*
 </p>
 
 
@@ -28,18 +28,21 @@ The advent of vision-language models fosters the interactive conversations betwe
 ## Contents
 - [Cost-effective Instruction Learning for Pathology Vision and Language Analysis (CLOVER)](#cost-effective-instruction-learning-for-pathology-vision-and-language-analysis-clover)
   - [Release](#release)
+  - [Workflow of CLOVER](#workflow-of-clover)
   - [Contents](#contents)
     - [Data Download](#data-download)
     - [Installation](#installation)
     - [Training](#training)
     - [Inference](#inference)
-  - [Case study](#case-study)
+  - [Case Study](#case-study)
   - [Related Projects](#related-projects)
+
+
 
 
 ### Data Download
 - Stage 1: Quilt-1M dataset can be downloaded from [Google](https://docs.google.com/forms/d/e/1FAIpQLSdSe06DIbPn71jA2rCxe_5tUPfyHhSH1Z7ZTJBxWM26cnpZFg/viewform) or [Zenodo](https://zenodo.org/records/8239942).
-- Stage 2: CLOVER Instructions will be released. Of course, you can also use our prompt to generate the data if you want.
+- Stage 2: CLOVER Instructions will be released. Of course, you can also use our prompt to generate the data from [PY FILE](./generate_instructions.py) if you want.
 
 
 ### Installation
