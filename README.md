@@ -14,6 +14,8 @@
 
 ## 📅 Latest News
 
+**[2025/06]** 🚀 **Training Data and Model Released on Hugging Face!** Our training data and pre-trained models are now available on [Hugging Face](https://huggingface.co/jline/CLOVER) for easy access and deployment.
+
 **[2025/06]** 🎉 **Paper Published in Nature Computational Science!** Our paper "Cost-effective Instruction Learning for Pathology Vision and Language Analysis" has been officially published in [Nature Computational Science](https://doi.org/10.1038/s43588-025-00818-5).
 
 **[2024/07]** 📝 **arXiv Preprint Available!** Our paper "Cost-effective Instruction Learning for Pathology Vision and Language Analysis" is now available on [arXiv](https://arxiv.org/abs/2407.17734).
