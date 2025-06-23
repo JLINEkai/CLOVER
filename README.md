@@ -14,7 +14,9 @@
 
 ## 📅 Latest News
 
-**[2025/06]** 🚀 **Training Data and Model Released on Hugging Face!** Our training data and pre-trained models are now available on [Hugging Face](https://huggingface.co/jline/CLOVER) for easy access and deployment.
+**[Coming Soon]** 🔥 **CLOVER Based on Qwen2.5-VL Version!** We will soon release a new version of CLOVER based on Qwen2.5-VL, offering enhanced multimodal capabilities and improved performance for pathology analysis. Stay tuned!
+
+**[2025/06]** ⭐ **Training Data and Model Released on Hugging Face!** Our instruction data and models are now available on [Hugging Face](https://huggingface.co/jline/CLOVER) for easy access and deployment.
 
 **[2025/06]** 🎉 **Paper Published in Nature Computational Science!** Our paper "Cost-effective Instruction Learning for Pathology Vision and Language Analysis" has been officially published in [Nature Computational Science](https://doi.org/10.1038/s43588-025-00818-5).
 
@@ -26,13 +28,13 @@
 
 CLOVER is a cost-effective instruction learning framework designed for conversational pathology analysis. It addresses the challenges of deploying vision-language models in clinical settings by providing an efficient training approach that requires minimal computational resources while maintaining high performance.
 
-### 🎯 Key Features
+<!-- ### 🎯 Key Features
 
 - **🔄 Two-Stage Training**: Vision-language alignment + instruction fine-tuning
 - **💰 Cost-Effective**: Uses GPT-3.5 for instruction generation only costs $8
 - **⚡ Lightweight**: Only trains a small module while freezing LLM parameters
 - **🏥 Domain-Specific**: Optimized for pathology analysis with specialized instructions
-- **📊 High Performance**: Outperforms baselines with 37x more training parameters
+- **📊 High Performance**: Outperforms baselines with 37x more training parameters -->
 
 <!-- ### 🚀 Quick Start
 
