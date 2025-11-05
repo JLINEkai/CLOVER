@@ -16,7 +16,7 @@
 
 **[2025/11]** 🔥 **CLOVER Based on Qwen2.5-VL Version!** We release a new version of CLOVER based on Qwen2.5-VL on **[Hugging Face](https://huggingface.co/jline/CLOVER-Qwen2.5-VL)**, offering enhanced multimodal capabilities and improved performance for pathology analysis.
 
-**[2025/06]** ⭐ **Training Data and Model Released on Hugging Face!** Our instruction data and models are now available on [Hugging Face](https://huggingface.co/jline/CLOVER_instructions) for easy access and deployment.
+**[2025/06]** ⭐ **Training Data and Model Based on BLIP-2 Released on Hugging Face!** Our instruction data and models are now available on [Hugging Face](https://huggingface.co/jline/CLOVER_instructions) for easy access and deployment. Details can be found in the [CLOVER-Ori](CLOVER-Ori).
 
 **[2025/06]** 🎉 **Paper Published in Nature Computational Science!** Our paper "Cost-effective Instruction Learning for Pathology Vision and Language Analysis" has been officially published in [Nature Computational Science](https://doi.org/10.1038/s43588-025-00818-5).
 
