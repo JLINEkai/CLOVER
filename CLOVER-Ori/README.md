@@ -164,7 +164,7 @@ CLOVER demonstrates superior performance on pathology vision-language tasks.
    - Alternative: [Zenodo](https://zenodo.org/records/8239942)
 
 2. **CLOVER Instructions** (Stage 2)
-   - Will be released soon
+   - Download from [Huggingface](https://huggingface.co/jline/CLOVER_instructions)
    - You can generate your own using our prompts in `generate_instructions.py`
 
 

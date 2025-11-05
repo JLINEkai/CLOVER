@@ -61,7 +61,7 @@ pip install -r requirements.txt
 
 </div>
 
-### Training Stages
+
 
 <!-- 1. **Stage 1 - Alignment**: Uses Quilt-1M dataset for vision-language representation learning
 2. **Stage 2 - Instruction Fine-tuning**: Domain-specific instruction data for pathology analysis -->
@@ -131,7 +131,8 @@ output_text = processor.batch_decode(
 print(output_text)
 ```
 
-
+## 🏋️ Training
+For CLOVER-Qwen2.5-VL training, we follow a curriculum similar to [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). Note, the first version of CLOVER-BLIP2's training can be found in the [CLOVER-Ori](CLOVER-Ori) folder.
 
 ## 📄 License
 
