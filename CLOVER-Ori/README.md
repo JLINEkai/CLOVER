@@ -16,7 +16,7 @@
 
 **[2025/11]** 🔥 **CLOVER Based on Qwen2.5-VL Version!** We release a new version of CLOVER based on Qwen2.5-VL on **[Hugging Face](https://huggingface.co/jline/CLOVER-Qwen2.5-VL)**, offering enhanced multimodal capabilities and improved performance for pathology analysis.
 
-**[2025/06]** ⭐ **Training Data and Model Based on BLIP-2 Released on Hugging Face!** Our instruction data and models are now available on [Hugging Face](https://huggingface.co/jline/CLOVER_instructions) for easy access and deployment. Details can be found in the [CLOVER-Ori](CLOVER-Ori).
+**[2025/06]** ⭐ **Training Data and Model Released on Hugging Face!** Our instruction data and models are now available on [Hugging Face](https://huggingface.co/jline/CLOVER_instructions) for easy access and deployment.
 
 **[2025/06]** 🎉 **Paper Published in Nature Computational Science!** Our paper "Cost-effective Instruction Learning for Pathology Vision and Language Analysis" has been officially published in [Nature Computational Science](https://doi.org/10.1038/s43588-025-00818-5).
 
@@ -61,78 +61,114 @@ pip install -r requirements.txt
 
 </div>
 
-
+### Training Stages
 
 <!-- 1. **Stage 1 - Alignment**: Uses Quilt-1M dataset for vision-language representation learning
 2. **Stage 2 - Instruction Fine-tuning**: Domain-specific instruction data for pathology analysis -->
 
 ---
 
-## 🚀 Quick Start
+## ⚙️ Installation
 
+### Prerequisites
+
+- Python 3.8+
+- CUDA-compatible GPU 
 
 ### Step-by-Step Installation
 
-  ```bash
-conda create -n clover python=3.10
-conda activate clover
+1. **Create Conda Environment**
+   ```bash
+   conda create -n clover python=3.9
+   conda activate clover
+   ```
 
-pip install torch==2.4.0 torchvision==0.19.0 --extra-index-url https://download.pytorch.org/whl/cu118
+2. **Clone Repository**
+   ```bash
+   git clone https://github.com/JLINEkai/CLOVER.git
+   cd CLOVER
+   ```
 
-pip install transformers==4.52.4 accelerate qwen-vl-utils
-  ```
+3. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### Run
-```Python
-from transformers import Qwen2_5_VLForConditionalGeneration, AutoTokenizer, AutoProcessor
-from qwen_vl_utils import process_vision_info
-import torch
-# default: Load the model and processer on the available device(s)
-model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-    "jline/CLOVER-Qwen2.5-VL", torch_dtype=torch.bfloat16, device_map="auto"
-)
-processor = AutoProcessor.from_pretrained("jline/CLOVER-Qwen2.5-VL")
+---
 
-messages = [
-    {
-        "role": "user",
-        "content": [
-            {
-                "type": "image",
-                "image": "./image_path.png",
-            },
-            {"type": "text", "text": "Describe this image."},
-        ],
-    }
-]
+## 🔧 Usage
 
-# Preparation for inference
-text = processor.apply_chat_template(
-    messages, tokenize=False, add_generation_prompt=True
-)
-image_inputs, video_inputs = process_vision_info(messages)
-inputs = processor(
-    text=[text],
-    images=image_inputs,
-    videos=video_inputs,
-    padding=True,
-    return_tensors="pt",
-)
-inputs = inputs.to("cuda")
+### Training
 
-# Inference: Generation of the output
-generated_ids = model.generate(**inputs, max_new_tokens=128)
-generated_ids_trimmed = [
-    out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)
-]
-output_text = processor.batch_decode(
-    generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False
-)
-print(output_text)
+#### Stage 1: Vision-Language Alignment
+```bash
+python train_blip2qformer.py
 ```
 
-## 🏋️ Training
-For CLOVER-Qwen2.5-VL training, we follow a curriculum similar to [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). Note, the first version of CLOVER-BLIP2's training can be found in the [CLOVER-Ori](CLOVER-Ori) folder.
+#### Stage 2: Instruction Fine-tuning
+```bash
+python -m torch.distributed.run --nproc_per_node=1 train.py
+```
+
+**Note**: You can choose the large language model (LLM) in `lavis/projects/blip2/train/pretrain_stage2.yaml`. We provide support for FlanT5XL and Vicuna 7B.
+
+### Inference
+
+```bash
+python -m torch.distributed.run --nproc_per_node=1 evaluate.py --cfg-path lavis/projects/blip2/eval/vqav2_zeroshot_flant5xl_eval.yaml
+```
+
+---
+
+## 📊 Results & Performance
+
+### Benchmark Results
+
+CLOVER demonstrates superior performance on pathology vision-language tasks.
+
+
+
+### Quantitative Comparison
+<div align="center">
+  <img src="imgs/t1.jpg" width="90%" alt="PathVQA Results">
+  
+  *Comparison with SOTA methods on PathVQA dataset.*
+</div>
+
+<div align="center">
+  <img src="imgs/t2.jpg" width="90%" alt="QUILT-VQA Results">
+  
+  *Comparison with prior SOTA methods on QUILT-VQA dataset.*
+</div>
+
+
+
+### Qualitative Examples
+
+
+
+<div align="center">
+  <img src="imgs/c1.jpg" width="90%" alt="LLaVA-Med-17K Results">
+  
+  *Qualitative comparisons of visual question answering.*
+</div>
+
+---
+
+## 📁 Data
+
+### Required Datasets
+
+1. **Quilt-1M Dataset** (Stage 1)
+   - Download from [Google Drive](https://docs.google.com/forms/d/e/1FAIpQLSdSe06DIbPn71jA2rCxe_5tUPfyHhSH1Z7ZTJBxWM26cnpZFg/viewform)
+   - Alternative: [Zenodo](https://zenodo.org/records/8239942)
+
+2. **CLOVER Instructions** (Stage 2)
+   - Download from [Huggingface](https://huggingface.co/jline/CLOVER_instructions)
+   - You can generate your own using our prompts in `generate_instructions.py`
+
+
+---
 
 ## 📄 License
 
@@ -144,7 +180,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Based on [Qwen2.5-VL](https://huggingface.co/Qwen) and [BLIP-2](https://github.com/salesforce/LAVIS/tree/main) framework
+- Based on [BLIP-2](https://github.com/salesforce/LAVIS/tree/main) framework
 
 - Inspired by recent advances in vision-language models
 
